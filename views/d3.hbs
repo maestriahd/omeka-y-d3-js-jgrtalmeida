@@ -1,4 +1,18 @@
-<h1>D3</h1>
+
+<div class="head">
+<h1><img src= /images/logo.png alt= "logo" width="150" height=150"></h1>
+<h2>Hay mucho más que un río de sangre</h2>
+</div>
+<div class="second">
+<ul>
+  <li> <a href = "/"><img src=/images/inicio.png alt="inicio" width="100" height="100"></a> </li>
+  <li> <a href = "/about"><img src=/images/sobre.png alt="sobre" width="100" height="100"></a> </li>
+  <li> <a href = "/colabore"><img src=/images/colabore.png alt="colabore" width="110" height="110"></a> </li>
+    <li> <a href = "/parcero"><img src=/images/parceros.png alt="parcero" width="110" height="110"></a> </li>
+    <li> <a href = "/portfolio"><img src=/images/portfolio.png alt="portfolio" width="110" height="110"></a> </li>
+
+</div>
+
 
 <!-- div donde se inyectará la visualizción de D3js -->
 <div id="viz"></div>
@@ -10,50 +24,45 @@
 
 <!-- script de JS que hace las peticiones al servidor y crea la visualización-->
 <script type="text/javascript">
-
 // Función encargadad de la visualización de datos por medio de D3
 function viz(data){
   // selecciona la división donde se inyectará el SVG
   var svg = d3.select('#viz')
     .append('svg') // agrega un elemento SVG
-    .attr('width', 400) // al SVG le agrega el atributo ancho de 400px
-    .attr('height', 200) // al SVG le agrega el atributo alto de 200px
-
+    .attr('width', 1600) // al SVG le agrega el atributo ancho de 400px
+    .attr('height', 3200) // al SVG le agrega el atributo alto de 200px
   var elem = svg.selectAll('g') // selecciona todos los elementos `g` (grupos)
     .data(data) // enlaza los datos del servidor
-
   var elemEnter = elem.enter()
       .append('g') // agrega un grupo
       .attr('transform', function(d,i){ // aplica una transformación al elemento
-        return "translate("+(80*i+40)+", 80)" // calcula la posción relativo a
+        return "translate(80, "+(200*i+200)+")" // calcula la posción relativo a
                                               // los datos
       })
+      var circulo = elemEnter.append('circle') // agrega un circulo
+       .attr('stroke', 'black') // la línea de contorno será negra
+       .attr('fill', function(d){ // el color de relleno se aplica según el
+                                  // resultado de esta función
+         if(d.public){     // si el elemento actual es público
+           return 'Darkblue'  // el color de relleno será verde
+         } else {          // de lo contrario (será público)
+           return 'red'    // el color de relleno será rojo
 
-  var circulo = elemEnter.append('circle') // agrega un circulo
-    .attr('stroke', 'black') // la línea de contorno será negra
-    .attr('fill', function(d){ // el color de relleno se aplica según el
-                               // resultado de esta función
-      if(d.public){     // si el elemento actual es público
-        return 'green'  // el color de relleno será verde
-      } else {          // de lo contrario (será público)
-        return 'red'    // el color de relleno será rojo
-      }
-    })
-
+         }
+          })
     .attr('r', function(d){ // el radio dependerá de la cantidad de items en la
-      return d.items.count * 10 // colección
+      return d.items.count * 5 // colección
     })
-
   // crea los textos etiquetando cada uno de los círculos
   var txt = elemEnter.append('text') //agrega un elemento de tipo text
-    .attr('dy', -35) // la posición en y
-    .attr('dx', -20) // la posición en x
+    .attr('dy', -60) // la posición en y
+    .attr('dx', -50) // la posición en x
+      .attr ('fill', 'red')
+      .attr ('style', 'font-size:28px;')
     .text(function(d){ // extrae el texto de la información del servidor
       return d.element_texts[0].text
     })
-
 }
-
 // Rutina para hacer la petición al servidor de Omeka
 // 1. crea una nueva instancia de XMLHttpRequest
 var request = new XMLHttpRequest();
@@ -61,12 +70,11 @@ var request = new XMLHttpRequest();
 // servidor proxy para souclionar problemas de CORS (ver README)
 var CORS_PROXY = 'http://192.169.250.12:8088/';
 // usa el proxy?
-var use_cors = false;
-//la URL del API (http://miomeka.org/api)
-var baseUrl = ''
+var use_cors = true;
+//la URL del API (http://elcrucedelrio.omeka.net/api)
+var baseUrl = 'http://elcrucedelrio.omeka.net/api'
 // el key generado por omeka
-var API_KEY = ''
-
+var API_KEY = 'a36cc25663b183871facaba86c9d9a8a252855af'
 // comstruye la URL final a partir de los datos suministrados anteriormente
 var URL = '' // variable donde se guardará la URL final
 // Si va a usar el proxy
@@ -77,14 +85,12 @@ if (use_cors){
 // si no usa el proxy
 } else {
   // concatena todas las variables
-  // http://miomeka.org/api/collections?key=API_KEY
+  // http://elcrucedelrio.omeka.net/api/collections?key=API_KEY
   URL = baseUrl+'/collections?key='+API_KEY
 }
-
 // 2. abre una conexión al servidor usando el método GET
 // la URL debe estar construida así:
 request.open('GET', URL, true);
-
 // cuando se ejecuta la conexión con el servidor y obtenemos respuesta
 request.onload = function() {
   // si la petición se ejecuta correctamente
@@ -98,7 +104,6 @@ request.onload = function() {
     console.log('ups! tenemos un error', request.status)
   }
 };
-
 // si hay un error, este evento se ejecuta para informar que algo pasó
 request.onerror = function() {
   // algo pasó en el intento de conexión
@@ -106,5 +111,4 @@ request.onerror = function() {
 };
 // hace la petición al servidor
 request.send();
-
 </script>

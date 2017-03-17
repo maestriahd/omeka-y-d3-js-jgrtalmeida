@@ -1,24 +1,10 @@
-<!--
-  Este archivo define la estructura general de los documentos de HTML
-  que van a ser producidos por esta aplicación
- -->
 <!DOCTYPE html>
 <html>
   <head>
-    <!--  injecta el título provisto desde la ruta -->
     <title>{{title}}</title>
-    <!-- incluye la hoja de estilos que está en `public/stylesheets/style.css` -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <!--
-     inyecta autómaticamente el contenido rendereado desde los archivos
-     ejecutados por la ruta. Esta funcionalidad está implementada autómaticamente
-     en la libreria encargada de hacer la conexion entre express y hbs.
-
-     los tripes corchetes le indican a HBS que el contenido es HTML y debe ser
-     respetado su formato.
-     -->
     {{{body}}}
   </body>
 </html>

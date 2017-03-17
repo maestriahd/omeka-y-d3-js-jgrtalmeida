@@ -1,0 +1,43 @@
+
+<div class="head">
+<h1><img src= /images/logo.png alt= "logo" width="150" height=150"></h1>
+<h2>Hay mucho más que un río de sangre</h2>
+</div>
+<div class="second">
+<ul>
+  <li> <a href = "/"><img src=/images/inicio.png alt="inicio" width="100" height="100"></a> </li>
+  <li> <a href = "/about"><img src=/images/sobre.png alt="sobre" width="100" height="100"></a> </li>
+  <li> <a href = "/colabore"><img src=/images/colabore.png alt="colabore" width="110" height="110"></a> </li>
+  <li> <a href = "/parcero"><img src=/images/parceros.png alt="parcero" width="110" height="110"></a> </li>
+  <li> <a href = "/portfolio"><img src=/images/portfolio.png alt="portfolio" width="110" height="110"></a> </li>
+
+</div>
+
+
+{{#each item.element_texts}}
+    <h1>{{this.text}}</h1>
+{{/each}}
+
+<h2>Colección</h2>
+
+{{#each collection.element_texts}}
+    <h1>{{this.text}}</h1>
+{{/each}}
+
+<img src="{{files.0.file_urls.thumbnail}}" alt="">
+
+
+<h1>TODOS LOS ITEMS</h1>
+{{#each items}}
+  {{#each this.element_texts}}
+      {{#ifeq this.element.name 'Title'}}
+        <h4>{{this.text}}</h4>
+      {{/ifeq}}
+      {{#ifeq this.element.name 'Subject'}}
+        <p>subject: {{this.text}}</p>
+      {{/ifeq}}
+      {{#ifeq this.element.name 'Description'}}
+        <p>des: {{this.text}}</p>
+      {{/ifeq}}
+  {{/each}}
+{{/each}}

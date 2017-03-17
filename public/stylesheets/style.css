@@ -1,8 +1,89 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+background-color: black;
+background-image: url(/images/mar.jpg);
+background-repeat: repeat;
+  padding:px;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:  #F1F2EB;
+}
+ul li{
+  display: inline;
 }
 
-a {
-  color: #00B7FF;
+h1{
+  padding: 0;
+  margin: 0;
+}
+h2{
+  padding:0;
+  margin: 0;
+    text-shadow: 0 10px 20px #000000;
+}
+.sobre{
+  background-color: black;
+  padding: 10px;
+  margin: 50px;
+  align-content: center;
+  text-align: justify;
+   text-justify: inter-word;
+}
+.parcero{
+  background-color: black;
+  padding: 10px;
+  margin: 50px;
+  align-content: center;
+  text-align: justify;
+   text-justify: inter-word;
+}
+.parcero img{
+  float: left;
+  padding: 0px 20px 2px 0px;
+}
+
+/{
+  background-color: #26596A;
+  background-image: url(/images/mar.jpg);
+  background-repeat: repeat;
+  border-style: none; ;
+}
+
+.head{
+padding: 20px;
+  background-color: #26596A;
+  background-image: url(/images/arena.jpg);
+  background-repeat: repeat;
+  border-style: none;
+  box-shadow:
+  0 10px 20px #fff, /*bottom external highlight*/
+   0 -10px 10px #666, /*top external shadow*/
+   inset 0 -10px 10px rgba(0,0,0,0.5), /*bottom internal shadow*/
+   inset 0 10px 10px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+.second{
+  padding: 2px;
+    background-color: #26596A;
+    background-image: url(/images/ocean.jpg);
+    background-repeat: repeat;
+    border-style: none;
+    box-shadow:
+    0 10px 20px #fff, /*bottom external highlight*/
+     0 -1px 1px #666, /*top external shadow*/
+     inset 0 -10px 10px rgba(0,0,0,0.5), /*bottom internal shadow*/
+     inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.vidini{
+  display:block;
+  margin: 0 auto;
+padding: 50px;
+}
+
+
+form {
+  background-color: black;
+  text-align: center;
+  text-shadow: 0 10px 20px #000000;
+  display:block;
+  padding: 20px;
+  margin: 100px 400px 100px 400px;
 }
